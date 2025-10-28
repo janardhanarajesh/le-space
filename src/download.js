@@ -34,7 +34,7 @@ if (error) {
         .from("file_data")
         .select("*")
         .order("id", { ascending: false });
-        if(data.length==0)
+        if(data.length===0)
         {
             alert("No Data Found!!");
             window.location.href="/upload";
