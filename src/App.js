@@ -3,7 +3,6 @@ import Upload from "./Upload";
 import Download from "./download";
 import './App.css';
 import Login from "./login";
-const Home = () => <h2>Welcome to My App 🚀</h2>;
 
 const App = () => {
   return (
