@@ -1,6 +1,7 @@
 import {supabase} from "./supabaseClient";
 import { useEffect, useState } from "react";
 const Upload=()=>{
+    
     const logout=(e)=>{
         e.preventDefault();
         localStorage.removeItem("name");
@@ -8,6 +9,7 @@ const Upload=()=>{
     }
     const [file,setFile]=useState(null);
     const [preview,setPreview]=useState(null);
+    
 useEffect(()=>{
     
     if(!localStorage.getItem("name"))
@@ -16,13 +18,19 @@ alert("you have to login first");
 window.location.href="/";
     }
 })
+ 
     const Upl=async(e)=>{
         e.preventDefault();
+         if(file.size>(45*1024*1024))
+  {
+    alert("file size is too large");
+    return;
+  }
         const fname=document.getElementById("name").value;
         const sem=document.getElementById("sem").value;
         const uname=localStorage.getItem("name");
         try{
-        if(!file)
+        if(!file|!preview)
         {
             alert("please select a file!!");
             return;
