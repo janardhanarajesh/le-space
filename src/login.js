@@ -12,11 +12,15 @@ try{
         alert("already logged in as "+name);
         return;
     }
-const {data,error}=await supabase
-.from("user")
-.select("*")
-.eq("name",name)
-.eq("password",password);
+const nameTrimmed = name.trim().toLowerCase();
+const passwordTrimmed = password.trim();
+
+const { data, error } = await supabase
+  .from("user")
+  .select("*")
+  .eq("name", nameTrimmed)
+  .eq("password", passwordTrimmed)
+  .single();
 if(data){
     alert("logged in as "+data.name);
     localStorage.setItem("name",data.name);
