@@ -113,7 +113,7 @@ else{
   <br/>
   <br/>
 
-  <input type="file" name="preview" required onChange={(e)=>setPreview(e.target.files[0])} placeholder="preview"/>
+  <input type="file" name="preview" accept="image/*" required onChange={(e)=>setPreview(e.target.files[0])} placeholder="preview"/>
   <br/>
   <br/>
 
