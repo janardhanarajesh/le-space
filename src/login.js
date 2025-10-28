@@ -16,8 +16,7 @@ const {data,error}=await supabase
 .from("user")
 .select("*")
 .eq("name",name)
-.eq("password",password)
-.single();
+.eq("password",password);
 if(data){
     alert("logged in as "+data.name);
     localStorage.setItem("name",data.name);
