@@ -100,6 +100,25 @@ else{
 
         }        
     }
+
+const uploadtxt=async()=>{
+
+  let val=document.getElementById("txtarea").value;
+  if(val.length==0||val=="")
+  {
+    alert("The text area is empty!!!");
+  }
+  else{
+    const { data, error} =await supabase
+              .from("txt_data")
+              .insert([{ "txt":val,"user":localStorage.getItem("name")}])
+              .select();
+            alert("successfully uploded the data!!");
+}
+
+  }
+
+
     return(
 <div>
     <div className="logout">
@@ -136,8 +155,18 @@ else{
   <button type="submit">Upload</button>
 </form>
 </div>
-</center>
+<br/>
+<div id="txt">
+  <br/>
+<textarea id="txtarea">
 
+</textarea>
+<button id="txtareabut"  onClick={uploadtxt}>upload</button>
+</div>
+</center>
+</div>
+<div className="credit">
+  designed ,developed &maintained by janardhana rajesh
 </div>
 </div>
     );
