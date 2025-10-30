@@ -38,8 +38,8 @@
 }
 
 .files{
-  height: 400px;
-  width: 200px;
+  height: 450px;
+  width: 60%;
   background-color: white;
   border-radius: 10px;
   box-shadow: 1px 1px 3px black;
@@ -49,7 +49,7 @@
 }
 .infile{
   height: 150px;
-  width: 100px;
+  width: 100%;
   border: 1px solid black;
 }
 
@@ -59,16 +59,16 @@
   border: none;
   height: 30px;
   color: white;
-  width: 30%;
   box-shadow: 1px 1px 2px black;
   border-radius: 3px;
+  width:55%;
 }
 .files>button{
   cursor: pointer;
   background-color: white;
   border: none;
   height: 30px;
-  width: 30%;
+  width: 55%;
   box-shadow: 1px 1px 2px black,1px 1px 10px red inset;
   border-radius: 3px;
 }
@@ -164,4 +164,46 @@ text-align: center;
 }
 body{
   background-color: #333333;
+}
+#txtarea{
+  height: 80px;
+  width: 90%;
+
+}
+#txtareabut{
+  height: 20px;
+  width: 90%;
+}
+#txt{
+  height: 150px;
+  width: 100%;
+  box-shadow: 1px 1px 4px white;
+}
+#txt_div{
+  width: 50%;
+  float: right;
+}
+#filediv{
+  height: auto;
+  width: 50%;
+  float: left;
+}
+textarea{
+  width: 63%;
+  resize: none;
+}
+.downtxt{
+  height: 40px;
+  width: 50%;
+}
+.downtxt>textarea{
+  float: left;
+}
+.downtxt>button{
+  float: right;
+  height: 40px;
+}
+.credit{
+  color: white;
+  text-align: center;
 }
