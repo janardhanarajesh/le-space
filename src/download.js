@@ -15,6 +15,8 @@ window.location.href="/";
     }
 })
     const [files,getFiles]=useState([]);
+    const [txt,getTxt]=useState([]);
+
     useEffect(()=>{
         colfile();
     },[]);
@@ -36,37 +38,69 @@ if (error) {
         .order("id", { ascending: false });
         if(data.length===0)
         {
-            alert("No Data Found!!");
-            window.location.href="/upload";
+            alert("No files Found!!");
             
         }
-        console.log(data.url);
         if (error)
         {
             alert(error);
         }
         else{
             getFiles(data);
+            
+        }
+        const {data:data1,error:err1}=await supabase
+        .from("txt_data")
+        .select("*")
+        .order("id", { ascending: false });
+        if(data1.length===0)
+        {
+            alert("No txt Found!!");
+            
+        }
+        if (err1)
+        {
+            alert(error);
+        }
+        else{
+            getTxt(data1);
+        }
+        if(data.length==0&&data1.length==0)
+        {
+            window.location.href="/upload"
         }
 
     }
+   const dels=async(x)=>{
+const {data,error}=await supabase
+.from("txt_data")
+.delete()
+.eq("id",x);
+if (error) {
+      console.error("Error deleting:", error.message);
+    } else {
+      alert("deleted successfully!");
+    }
+    }
     return(
         <div>
+            <center>
+            
             <div className="logout">
             <button onClick={logout}>log out</button>
             </div>
-            <center>
-            <div>
+            <div id="filediv">
                 {files.map((e)=>{
                     return(
                     <div className="files">
                         <br/>
                         <div className="infile">
-                        <img src={e.preview} height={150} width={100} loading="lazy" alt="error"/>
+                        <img src={e.preview} height={150} width={50} loading="lazy" alt="error"/>
                         </div>
                         <br/>
                         <p>{e.file_name}</p>
                         <p>{e.uname}</p>
+                        <p>{e.sem}</p>
                         <a href={e.url}><button>view</button></a>
                         <br/>
                         <br/>
@@ -76,8 +110,37 @@ if (error) {
                         </div>
                     );
                 })}
+          
+            
+             </div>
+             <br/>
+             <br/>
+             <br/>
+             <br/>
+             <br/>
+             <br/>
+
+              <div id="txt_div">
+                {
+                    txt.map((e)=>{
+return(
+    <div className="downtxt">
+        <textarea id="txre" value={e.txt}>
+
+                </textarea>
+                <button onClick={()=>dels(e.id)}>
+                    x
+                </button>
+ 
+        </div>
+)
+                    })
+ }
             </div>
-            </center>
+        
+              </center>
+              
+              
         </div>
     )
  }
