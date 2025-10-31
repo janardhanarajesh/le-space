@@ -21,6 +21,8 @@ window.location.href="/";
         colfile();
     },[]);
     const del=async(x,y)=>{
+        if(window.confirm("delete the file ??"))
+        {
 const {data,error}=await supabase
 .from("file_data")
 .delete()
@@ -30,6 +32,7 @@ if (error) {
     } else {
       alert(`${y} deleted successfully!`);
     }
+}
     }
     const colfile=async ()=>{
         const {data,error}=await supabase
@@ -49,6 +52,7 @@ if (error) {
             getFiles(data);
             
         }
+
         const {data:data1,error:err1}=await supabase
         .from("txt_data")
         .select("*")
@@ -72,6 +76,7 @@ if (error) {
 
     }
    const dels=async(x)=>{
+    if(window.confirm("delete the text ??")){
 const {data,error}=await supabase
 .from("txt_data")
 .delete()
@@ -81,6 +86,7 @@ if (error) {
     } else {
       alert("deleted successfully!");
     }
+}
     }
     return(
         <div>
@@ -95,7 +101,7 @@ if (error) {
                     <div className="files">
                         <br/>
                         <div className="infile">
-                        <img src={e.preview} height={150} width={50} loading="lazy" alt="error"/>
+                        <img src={e.preview} loading="lazy" alt="error"/>
                         </div>
                         <br/>
                         <p>{e.file_name}</p>
@@ -125,10 +131,10 @@ if (error) {
                     txt.map((e)=>{
 return(
     <div className="downtxt">
-        <textarea id="txre" value={e.txt}>
+        <textarea id="txre" value={e.txt+" from "+e.user}>
 
                 </textarea>
-                <button onClick={()=>dels(e.id)}>
+                <button onClick={()=>dels(e.id)} >
                     x
                 </button>
  

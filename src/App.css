@@ -136,31 +136,35 @@
   color: white;
 }
 #nav{
-height: 30px;
+height: 40px;
 width: 100%;
 background-color: #333333;
 box-shadow: 1px 1px 2px black;
 text-align: center;
 }
 #nav1{
-  height: 30px;
- 
+  height: 40px;
   width: 100%;
 }
 .nav2{
-  height: 30px;
+  height: 40px;
   width: 33.3%;
   float: left;
   text-align: center;
    color: white;
   text-decoration: none;
-  font-weight: bold;
+  font-weight: 600;
  
 }
 .nav2>a{
   text-decoration: none;
   color: white;
-  font-size: 120%;
+  font-size: 125%;
+}
+.nav2>a:hover{
+  font-size: 128%;
+  font-weight: bold;
+
 }
 body{
   background-color: #333333;
@@ -195,6 +199,7 @@ textarea{
 .downtxt{
   height: 40px;
   width: 50%;
+  color: white;
 }
 .downtxt>textarea{
   float: left;
@@ -206,4 +211,8 @@ textarea{
 .credit{
   color: white;
   text-align: center;
+}
+img{
+  height: 150px;
+  width: 95%;
 }
